@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Card from "./card"
 
 function Ricerca(){
     const [pokemon,setPokemon] = useState(null)
@@ -16,7 +17,8 @@ function Ricerca(){
         <button type="submit">
             Cerca
         </button>
-        {dati ? <div><p>{dati.name}</p> <img src={dati.sprites.front_default}></img></div> : "cerca pokemon" }
+        {dati ? (<Card nome={dati.name} immagine={dati.sprites.front_default}tipo={dati.types}abilita={dati.abilities}></Card>) :(<p>cerca pokemon</p>)  }
+       
     </form>
 }
 
