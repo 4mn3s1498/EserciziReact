@@ -1,12 +1,13 @@
-import './App.css'
-import Ricerca from './components/ricerca'
+import Hello from "./Hello";
+import Message from "./Message"
 
 function App() {
-  return (
-    <> <h1>Pokedex</h1>
-    <Ricerca></Ricerca>
-    </>
-  )
+    return (
+        <div>
+            <Hello />
+        <Message />
+        </div>
+    )
 }
 
 export default App
