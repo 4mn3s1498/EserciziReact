@@ -1,9 +1,11 @@
-import { Welcome } from "./Welcome";
+import { Counter } from "./Counter";
+import { CounterDisplay } from "./CounterDisplay";
 
 function App() {
   return (
     <div>
-      <Welcome name="John" age={25} />
+      <Counter vIniziale={0} incremento={1}></Counter>
+      
     </div>
   );
 }
