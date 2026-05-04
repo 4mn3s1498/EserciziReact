@@ -1,8 +1,12 @@
 import { CounterDisplay } from "./CounterDisplay";
 import { useState } from "react";
+import { useEffect } from "react";
 
 export function Counter({vIniziale, incremento} ){
     const [count, setCount]= useState(vIniziale)
+    useEffect(() => {
+  console.log(count);
+}, [count]);
     return (
         <div>
              <CounterDisplay count={count} />
@@ -10,6 +14,7 @@ export function Counter({vIniziale, incremento} ){
                 </button>
                <button onClick={()=>setCount(count- incremento)}>-</button>
                <button onClick={()=>setCount(vIniziale)}>RESET</button>
+               
 
         </div>
     )
