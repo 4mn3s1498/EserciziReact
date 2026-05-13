@@ -1,23 +1,68 @@
-export function Login() {
-    return (
-        <div>
-            <form
-                onSubmit={(event) => {
-                    event.preventDefault()
+import { useState } from "react"
 
-                    const formData = new FormData(event.target)
-                   console.log(formData.get("username")) 
-                    console.log(formData.get("password"))
-                }}
-            >
-                <input type="email" name="username" />
-                
-                <input type="password" name="password" />
+export function Login({ onLogin }) {
 
-                <button type="submit">
-                    Log-in
-                </button>
-            </form>
-        </div>
-    )
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const [remember, setRemember] = useState(false)
+
+  function handleLogin() {
+    onLogin({
+      username,
+      password,
+      remember
+    })
+  }
+
+  function handleReset() {
+    setUsername("")
+    setPassword("")
+    setRemember(false)
+  }
+
+  return (
+    <div>
+
+      <input
+        type="text"
+        value={username}
+        onChange={(event) => {
+          setUsername(event.target.value)
+        }}
+      />
+
+      <input
+        type="password"
+        value={password}
+        onChange={(event) => {
+          setPassword(event.target.value)
+        }}
+      />
+
+      <label>
+
+        <input
+          type="checkbox"
+          checked={remember}
+          onChange={(event) => {
+            setRemember(event.target.checked)
+          }}
+        />
+
+        Remember
+      </label>
+
+      <button
+        disabled={!username || !password}
+        onClick={handleLogin}
+      >
+        Login
+      </button>
+
+      <button onClick={handleReset}>
+        Reset
+      </button>
+
+    </div>
+  )
 }
