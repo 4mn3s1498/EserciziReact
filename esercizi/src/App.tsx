@@ -1,15 +1,18 @@
 import { useState } from 'react'
+import { FocusableInput } from './Focus'
+import { MountedMessage } from './MountedMessage'
+import { Counter } from './counter'
 
-import { InteractiveWelcome } from './intWelcome'
-import { Login } from './login'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     < >
-    <Login onLogin={(data) => console.log(data)} />
-     <InteractiveWelcome></InteractiveWelcome>
+    <FocusableInput />
+    <MountedMessage></MountedMessage>
+  <Counter initialValue={0} />
+
     </>
   )
 }
