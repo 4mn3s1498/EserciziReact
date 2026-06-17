@@ -14,12 +14,25 @@ describe("GithubUser", () => {
       avatar_url: "https://github.com/octocat.png",
     };
 
-    vi.spyOn(global, "fetch").mockResolvedValue({
+    vi.spyOn(globalThis, "fetch").mockResolvedValue({
       json: vi.fn().mockResolvedValue(fakeUser),
     } as any);
 
     render(<GithubUser username="octocat" />);
 
-    expect(await screen.findByText("The Octocat")).toBeInTheDocument();
+    expect(
+      await screen.findByText("The Octocat")
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByText("octocat")
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByRole("img", { name: "octocat" })
+    ).toHaveAttribute(
+      "src",
+      "https://github.com/octocat.png"
+    );
   });
 });
